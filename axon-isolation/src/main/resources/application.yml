@@ -9,13 +9,13 @@ spring:
     console:
       enabled: true
 
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: client
-#    password: guest
-#    ssl:
-#      enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: client
+    password: guest
+    ssl:
+      enabled: true
 
   jackson:
     serialization:
