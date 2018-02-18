@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.stavich.axon.test.core.auto.config.AxonTestAutoConfig
