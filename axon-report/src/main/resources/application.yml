@@ -1,9 +1,9 @@
 server:
-  port: 8100
+  port: 8102
 
 spring:
   application:
-    name: isolation
+    name: report
 
   h2:
     console:
@@ -16,8 +16,8 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    username: isolation
-    password: isolation
+    username: report
+    password: report
 
   jackson:
     serialization:
@@ -41,6 +41,13 @@ axon:
   test:
     auto:
       config: true
+
+logging:
+    level:
+      com.netflix.eureka: INFO
+      com.netflix.discovery: INFO
+      org.springframework.web: WARN
+      org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
 
 management:
   security:

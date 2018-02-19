@@ -19,6 +19,7 @@ package org.stavich.axon.test.report;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.OffsetDateTime;
 
 @Entity
 public class ReportEntry {
@@ -29,15 +30,17 @@ public class ReportEntry {
     private String aggregateId;
     private long number;
     private String string;
+    private OffsetDateTime time;
 
     @SuppressWarnings("unused")
     public ReportEntry() {
     }
 
-    public ReportEntry(String aggregateId, long number, String string) {
+    public ReportEntry(String aggregateId, long number, String string, OffsetDateTime time) {
         this.aggregateId = aggregateId;
         this.number = number;
         this.string = string;
+        this.time = time;
     }
 
     public long getId() {
@@ -72,6 +75,14 @@ public class ReportEntry {
         this.string = string;
     }
 
+    public OffsetDateTime getTime() {
+        return time;
+    }
+
+    public void setTime(OffsetDateTime time) {
+        this.time = time;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -94,6 +105,7 @@ public class ReportEntry {
                 ", aggregateId='" + aggregateId + '\'' +
                 ", number=" + number +
                 ", string='" + string + '\'' +
+                ", time=" + time +
                 '}';
     }
 }

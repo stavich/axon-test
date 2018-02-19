@@ -16,12 +16,14 @@
 
 package org.stavich.axon.test.report;
 
+import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.stavich.axon.test.core.BusinessEvent;
 
 @Component
+@Slf4j
 public class BusinessEventListener {
 
     private ReportRepository repository;
@@ -33,9 +35,13 @@ public class BusinessEventListener {
 
     @EventHandler
     public void on(BusinessEvent event) {
-        repository.save(new ReportEntry(event.getAggregateId(),
-                                              event.getNumber(),
-                                              event.getString()));
+        log.info("Creating report: {}", event);
+        repository.save(
+                new ReportEntry(
+                        event.getAggregateId(),
+                        event.getNumber(),
+                        event.getString(),
+                        event.getTime()));
     }
 
 }

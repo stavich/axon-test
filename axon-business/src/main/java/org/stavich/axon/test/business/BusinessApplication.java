@@ -1,5 +1,8 @@
 package org.stavich.axon.test.business;
 
+import org.axonframework.amqp.eventhandling.spring.SpringAMQPPublisher;
+import org.axonframework.eventsourcing.eventstore.EventStore;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -26,4 +29,14 @@ public class BusinessApplication {
         filter.setAfterMessagePrefix("REQUEST DATA : ");
         return filter;
     }
+
+    @Bean
+    public SpringAMQPPublisher springAMQPPublisher(EventStore eventStore, ConnectionFactory connectionFactory){
+        SpringAMQPPublisher publisher = new SpringAMQPPublisher(eventStore);
+        publisher.setExchangeName("amq.topic");
+        publisher.setDurable(true);
+        publisher.start();
+        return publisher;
+    }
+
 }

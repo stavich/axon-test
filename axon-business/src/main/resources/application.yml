@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8101
 
 spring:
   application:
@@ -9,11 +9,15 @@ spring:
     console:
       enabled: true
 
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: client
-#    password: guest
+  datasource:
+#    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false
+    url: jdbc:h2:tcp://localhost/~/test # will create a database on <user-home>\test
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: business
+    password: business
 
   jackson:
     serialization:

@@ -40,7 +40,7 @@ public class IsolationController {
         long number = ThreadLocalRandom.current().nextLong(19999999999l, 99999999999l + 1l);
         BusinessCommand command = BusinessCommand
                 .builder()
-                .aggregateId(Long.toString(number))
+                .aggregateId("stavich")
                 .number(number)
                 .string("Command string")
                 .time(OffsetDateTime.now())
